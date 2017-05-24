@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="item">
+    <view>乘车人数：</view>
+    <view class="increaser">
+      <button class="btn-left" bindtap="handleMinusPeople">-</button>
+      <input type="number" data-type="people" maxlength="3" value="{{people}}" bindinput="bindKeyInput" />
+      <button class="btn-right" bindtap="handleAddPeople">+</button>
+    </view>
+    <view>人
+      <text class="empty">哈</text>
+    </view>
+  </view>
+  <view class="item choose-car">
+    <view>车型选择：</view>
+    <view class="increaser-wrapper">
+      <view class="inline-block">
+        <view class="increaser">
+          <button class="btn-left" bindtap="handleMinusCar1">-</button>
+          <input type="number" data-type="ordinary" maxlength="3" value="{{ordinaryCar}}" bindinput="bindKeyInput" />
+          <button class="btn-right" bindtap="handleAddCar1">+</button>
+        </view>
+        <view>普通</view>
+      </view>
+      <view class="inline-block">
+        <view class="increaser">
+          <button class="btn-left" bindtap="handleMinusCar2">-</button>
+          <input type="number" maxlength="3" data-type="comfort" value="{{comfortableCar}}" bindinput="bindKeyInput" />
+          <button class="btn-right" bindtap="handleAddCar2">+</button>
+        </view>
+        <view>舒适</view>
+      </view>
+      <view class="inline-block">
+        <view class="increaser">
+          <button class="btn-left" bindtap="handleMinusCar3">-</button>
+          <input type="number" maxlength="3" data-type="luxury" value="{{luxuryCar}}" bindinput="bindKeyInput" />
+          <button class="btn-right" bindtap="handleAddCar3">+</button>
+        </view>
+        <view>豪华</view>
+      </view>
+    </view>
+  </view>
+</view>

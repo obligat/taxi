@@ -1,0 +1,62 @@
+/**index.wxss**/
+
+.item {
+  display: flex;
+  line-height: 62rpx;
+  margin: 20rpx 0;
+}
+
+.increaser {
+  display: flex;
+  border-radius: 20rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.2);
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.increaser input {
+  width: 90rpx;
+  height: 62rpx;
+  text-align: center;
+}
+
+.increaser button {
+  line-height: 64rpx;
+}
+
+.btn-left {
+  border-right: 2rpx solid rgba(0, 0, 0, 0.2);
+  border-radius: 20rpx 0 0 20rpx;
+}
+
+.btn-right {
+  border-left: 2rpx solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 20rpx 20rpx 0;
+}
+
+.btn-left::after {
+  border-color: transparent;
+  border-radius: 20rpx 0 0 20rpx;
+}
+
+.btn-right::after {
+  border-color: transparent;
+  border-radius: 0 20rpx 20rpx 0;
+}
+
+.increaser-wrapper {
+  flex-direction: column;
+}
+
+.increaser-wrapper .increaser {
+  margin-bottom: 20rpx;
+}
+
+.inline-block {
+  display: flex;
+}
+
+.empty {
+  color: transparent;
+  margin-left: -20rpx;
+}

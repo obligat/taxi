@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/usercenter/usercenter",
+    "pages/confirmMessage/confirmMessage",
+    "pages/myOrder/myOrder",
+    "pages/orderDetail/orderDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "taxi",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/usercenter/usercenter",
+        "text": "我的"
+      }
+    ]
+  }
+}
