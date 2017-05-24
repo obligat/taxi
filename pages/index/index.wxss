@@ -4,13 +4,18 @@
   display: flex;
   line-height: 62rpx;
   margin: 20rpx 0;
+  width: 560rpx;
+}
+
+.item:nth-child(1) view {
+  margin-right: 20rpx;
+  white-space: nowrap;
 }
 
 .increaser {
   display: flex;
   border-radius: 20rpx;
   border: 2rpx solid rgba(0, 0, 0, 0.2);
-  margin-left: 20rpx;
   margin-right: 20rpx;
 }
 
@@ -59,4 +64,29 @@
 .empty {
   color: transparent;
   margin-left: -20rpx;
+}
+
+.increaser-first {
+  margin-left: -20rpx;
+}
+
+.textarea {
+  height: 100rpx;
+  line-height: 40rpx;
+  width: 380rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.phone {
+  border: 2rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.remark {
+  text-indent: 40rpx;
+}
+
+.tip {
+  font-size: 32rpx;
+  color: #888;
+  margin: 40rpx auto;
 }

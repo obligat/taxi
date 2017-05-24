@@ -65,7 +65,6 @@ Page({
     })
   },
   bindKeyInput: function (e) {
-    console.log(e)
     let input = Number(e.detail.value)
     let type = e.target.dataset.type
     if (type == 'people') {
