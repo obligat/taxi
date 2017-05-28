@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "utils/wetoast/wetoast.wxss";
 
 .container {
   height: 100%;

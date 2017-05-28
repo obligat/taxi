@@ -1,4 +1,5 @@
 // pages/pickUpPlane/pickUpPlane.js
+let app = getApp()
 const date = new Date()
 const year = date.getFullYear()
 const months = []
@@ -21,19 +22,23 @@ Page({
     day,
     year,
     value: [month - 1, day - 1],
-    startPosition: '',
+    startPosition: '咸阳机场T2',
     endPosition: '',
     isChooseTime: false,
-    isSendPlane: false
+    type: 'pick'
   },
   handlePickUpPlane() {
     this.setData({
-      isSendPlane: false
+      type: 'pick',
+      startPosition: '咸阳机场T2',
+      endPosition: ''
     })
   },
   handleSendPlane() {
     this.setData({
-      isSendPlane: true
+      type: 'send',
+      endPosition: '咸阳机场T2',
+      startPosition: ''
     })
   },
   handleChooseTime() {
@@ -60,7 +65,6 @@ Page({
       success: function (res) {
         wx.chooseLocation({
           success: function (res) {
-            console.log(res)
             that.setData({
               startPosition: res.name
             })
@@ -85,12 +89,23 @@ Page({
     })
   },
   handleNextStep() {
-    wx.navigateTo({
-      url: '/pages/createOrder/createOrder',
-    })
+    let time = [this.data.year, this.data.month, this.data.day].join('-')
+    let startPosition = this.data.startPosition
+    let endPosition = this.data.endPosition
+    let type = this.data.type
+    if (time && startPosition && endPosition) {
+      wx.navigateTo({
+        url: `/pages/createOrder/createOrder?time=${time}&startPosition=${startPosition}&endPosition=${endPosition}&type=${type}`,
+      })
+    } else {
+      this.wetoast.toast({
+        title: '好像没有选择位置'
+      })
+    }
+
   },
   onLoad: function (options) {
-
+    new app.WeToast()
   },
   onReady: function () {
   },

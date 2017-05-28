@@ -31,27 +31,34 @@
     </view>
   </view>
   <view class="item">
-    <view class="">需要导游：</view>
-    <radio-group>
-      <radio value="是" checked="false" />是
-      <radio value="否" checked="ture" />否
+    <view>需要导游：</view>
+    <radio-group bindchange="radioChange">
+      <radio value="yes" checked="false" />是
+      <radio value="no" checked="ture" />否
     </radio-group>
+    <picker-view bindchange="pickerChange" wx:if="{{needGuide}}">
+      <picker-view-column>
+        <view wx:for="{{languages}}" wx:key="index">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
   </view>
-  <view class="item">
-    <view class="remark">备注：</view>
-    <textarea name="textarea" class="textarea" />
-  </view>
-  <view class="item">
-    <view>联系人：</view>
-    <input type="number" maxlength="13" class="phone" />
-  </view>
-  <view class="tip">
-    <view>普通为本田思域或同级车型，2~4 人</view>
-    <view>舒适为别克GL8或同级车型，2~6 人</view>
-    <view>豪华为奥迪A6或同级车型，2~6 人</view>
-  </view>
-  <view class="btn-group">
-    <button type="primary" bindtap="handleNextStep">下一步</button>
-    <button type="primary" bindtap="handleBack">返回</button>
-  </view>
+  <form bindsubmit="bindFormSubmit">
+    <view class="item">
+      <view class="remark">备注：</view>
+      <textarea name="remark" class="textarea" />
+    </view>
+    <view class="item">
+      <view>联系人：</view>
+      <input type="number" name="phone" maxlength="13" class="phone" />
+    </view>
+    <view class="tip">
+      <view>普通为本田思域或同级车型，2~4 人</view>
+      <view>舒适为别克GL8或同级车型，2~6 人</view>
+      <view>豪华为奥迪A6或同级车型，2~6 人</view>
+    </view>
+    <view class="btn-group">
+      <button type="primary" form-type="submit">下一步</button>
+      <button type="primary" bindtap="handleBack">返回</button>
+    </view>
+  </form>
 </view>

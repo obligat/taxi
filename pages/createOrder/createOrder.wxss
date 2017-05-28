@@ -77,8 +77,20 @@
   color: #888;
   margin: 40rpx auto;
   line-height: 40rpx;
+  text-align: center;
 }
 
 .btn-group {
   margin-top: 100rpx;
+  justify-content: center;
+}
+
+picker-view {
+  line-height: 120rpx;
+  width: 100rpx;
+  margin-left: 20rpx;
+}
+
+picker-view-column {
+  line-height: 60rpx;
 }

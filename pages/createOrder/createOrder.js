@@ -4,14 +4,46 @@
 var app = getApp()
 Page({
   data: {
-    people: 0,
     ordinaryCar: 0,
     comfortableCar: 0,
-    luxuryCar: 0
+    luxuryCar: 0,
+    languages: ['英语', '日语', '法语'],
+    language: '英语',
+    value: [0],
+    needGuide: 0
   },
-  handleNextStep() {
+  pickerChange(e) {
+    const val = e.detail.value
+    this.setData({
+      language: this.data.languages[val],
+    })
+  },
+  radioChange(e) {
+    var value = e.detail.value
+    if (value == 'yes') {
+      this.setData({
+        needGuide: 1
+      })
+    } else {
+      this.setData({
+        needGuide: 0
+      })
+    }
+  },
+  bindFormSubmit(e) {
+    const remark = e.detail.value.remark
+    const phone = e.detail.value.phone
+    const ordinaryCar = this.data.ordinaryCar
+    const comfortableCar = this.data.comfortableCar
+    const luxuryCar = this.data.luxuryCar
+    const needGuide = this.data.needGuide
+    const language = this.data.language
+    const time = this.data.time
+    const startPosition = this.data.startPosition
+    const endPosition = this.data.endPosition
+    const type = this.data.type
     wx.navigateTo({
-      url: '/pages/confirmMessage/confirmMessage',
+      url: `/pages/confirmMessage/confirmMessage?type=${type}&time=${time}&startPosition=${startPosition}&ordinaryCar=${ordinaryCar}&comfortableCar=${comfortableCar}&luxuryCar=${luxuryCar}&needGuide=${needGuide}&language=${language}&remark=${remark}&phone=${phone}`,
     })
   },
   handleBack() {
@@ -96,7 +128,13 @@ Page({
       })
     }
   },
-  onLoad: function () {
-
+  onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      time: options.time,
+      startPosition: options.startPosition,
+      endPosition: options.endPosition,
+      type: options.type
+    })
   }
 })

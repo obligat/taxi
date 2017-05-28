@@ -1,5 +1,7 @@
 //app.js
+let {WeToast} = require('utils/wetoast/wetoast.js')
 App({
+  WeToast,
   onLaunch: function () {
     wx.login({
       success(code) {
