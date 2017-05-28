@@ -19,14 +19,16 @@
     <button wx:else bindtap="handleChooseTime" type="primary" plain="true">选择</button>
   </view>
   <view class="wrapper flex-start">
-    <view class="">上车地点:</view>
-    <view class="position">{{startPosition?startPosition:"请选择地点"}} </view>
-    <button bindtap="choosePositionStart" type="primary" plain="true">选择</button>
+    <view class="">上车地点: </view>
+    <view class="position" wx:if="{{isSendPlane}}"> {{startPosition?startPosition:"请选择地点"}} </view>
+    <button bindtap="choosePositionStart" type="primary" plain="true" wx:if="{{isSendPlane}}">选择</button>
+    <view class="position" wx:if="{{!isSendPlane}}">咸阳机场T2</view>
   </view>
   <view class="wrapper flex-start">
-    <view class="">下车地点:</view>
-    <view class="position">{{endPosition?endPosition:"请选择地点"}} </view>
-    <button bindtap="choosePositionEnd" type="primary" plain="true">选择</button> 
+    <view class="">下车地点: </view>
+    <view class="position" wx:if="{{!isSendPlane}}"> {{endPosition?endPosition:"请选择地点"}} </view>
+    <button bindtap="choosePositionEnd" type="primary" plain="true" wx:if="{{!isSendPlane}}">选择</button>
+    <view class="position" wx:if="{{isSendPlane}}">咸阳机场T2</view>
   </view>
-  <button type="primary" class="btn-next">下一步</button>
+  <button type="primary" class="btn-next" bindtap="handleNextStep">下一步</button>
 </view>

@@ -84,6 +84,11 @@ Page({
       }
     })
   },
+  handleNextStep() {
+    wx.navigateTo({
+      url: '/pages/createOrder/createOrder',
+    })
+  },
   onLoad: function (options) {
 
   },

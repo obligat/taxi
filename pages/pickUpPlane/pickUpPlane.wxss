@@ -48,7 +48,7 @@ picker-view-column {
 }
 
 .position {
-  width: 250rpx;
+  width: 390rpx;
   line-height: normal;
   margin-top: 30rpx;
 }

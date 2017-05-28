@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/pickUpPlane/pickUpPlane",
+    "pages/createOrder/createOrder",
     "pages/index/index",
     "pages/travelApp/travelApp",
     "pages/myOrder/myOrder",
