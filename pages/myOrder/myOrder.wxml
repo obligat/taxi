@@ -1,2 +1,5 @@
 <!--pages/myOrder/myOrder.wxml-->
-<text>pages/myOrder/myOrder.wxml</text>
+<view class="">
+  <button bindtap="chooseWeizhi">choose GPS </button>
+  <view class="">{{location}}</view>
+</view>

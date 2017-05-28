@@ -1,0 +1,59 @@
+/* pages/pickUpCar/pickUpCar.wxss */
+
+/* pages/pickUpPlane/pickUpPlane.wxss */
+
+.btn-group {
+  display: flex;
+  margin-bottom: 60rpx;
+}
+
+.btn-group button {
+  line-height: 60rpx;
+  width: 180rpx;
+  color: white;
+  margin: 20rpx;
+}
+
+.btn-choosed {
+  background-color: #09bb07;
+}
+
+.wrapper {
+  display: flex;
+  line-height: 100rpx;
+  align-items: flex-start;
+}
+
+.wrapper button {
+  line-height: 60rpx;
+  min-width: 200rpx;
+  color: white;
+  margin: 20rpx;
+  background-color: #09bb07;
+}
+
+.hidden {
+  display: none;
+}
+
+picker-view {
+  line-height: 120rpx;
+  width: 132rpx;
+}
+
+picker-view-column {
+  line-height: 60rpx;
+}
+
+.position {
+  width: 250rpx;
+  line-height: normal;
+  margin-top: 30rpx;
+}
+
+.btn-next {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 200rpx;
+}

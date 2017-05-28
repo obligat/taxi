@@ -1,42 +1,30 @@
-// pages/myOrder/myOrder.js
+// pages/manageindex/manageindex.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    location: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  chooseWeizhi() {
-    var that = this
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        // wx.openLocation({
-        //   latitude: latitude,
-        //   longitude: longitude,
-        //   scale: 28,
-        // })
-        wx.chooseLocation({
-          success: function (res) {
-            console.log(res)
-            that.setData({
-              location: res.name
-            })
-          },
-        })
-      }
-    })
-
+    // const openid = wx.getStorageSync("openid")
+    // if (openid === "o6VgM0WVg3kmdYPdeDb1_obLFtqk") {
+    //   console.log('hhhahha')
+    //   wx.redirectTo({
+    //     url: '../myOrder/myOrder',
+    //     success(res) {
+    //       console.log(res)
+    //     },
+    //     fail(res) {
+    //       console.log(res)
+    //     }
+    //   })
+    // }
   },
 
   /**

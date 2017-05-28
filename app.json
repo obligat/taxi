@@ -1,9 +1,13 @@
 {
   "pages": [
+    "pages/pickUpPlane/pickUpPlane",
     "pages/index/index",
+    "pages/travelApp/travelApp",
+    "pages/myOrder/myOrder",
+    "pages/manageindex/manageindex",
+    "pages/pickUpCar/pickUpCar",
     "pages/usercenter/usercenter",
     "pages/confirmMessage/confirmMessage",
-    "pages/myOrder/myOrder",
     "pages/orderDetail/orderDetail"
   ],
   "window": {
