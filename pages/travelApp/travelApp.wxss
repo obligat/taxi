@@ -1,1 +1,13 @@
 /* pages/travelApp/travelApp.wxss */
+
+.type {
+  margin: 40rpx auto;
+}
+
+.phone {
+  margin-top: 20rpx;
+}
+
+.fix-top {
+  top: 136rpx;
+}

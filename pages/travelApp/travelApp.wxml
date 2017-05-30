@@ -1,1 +1,91 @@
 <!--pages/travelApp/travelApp.wxml-->
+<view class="container">
+  <radio-group bindchange="radioTypeChange" class="type">
+    <radio value="包车" checked="true" />包车
+    <radio value="班车接送" checked="false" />班车接送
+    <radio value="只需导游" checked="false" />只需导游
+  </radio-group>
+  <block wx:if="{{type != '只需导游'}}">
+    <view class="wrapper">
+      <view>使用方式：</view>
+      <radio-group bindchange="radioUseTypeChange">
+        <radio value="allDay" checked="true" /> 全天
+        <radio value="halfDay" checked="false" />半天
+      </radio-group>
+    </view>
+    <view class="wrapper">
+      <view>按您时间:{{year}}年</view>
+      <view wx:if="{{!isChooseTime}}">{{month}}月{{day}}日</view>
+      <picker-view value="{{value}}" bindchange="bindChange" wx:key="index" wx:else>
+        <picker-view-column>
+          <view wx:for="{{months}}" wx:key="index">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:key="index">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+      <button wx:if="{{isChooseTime}}" bindtap="confirmTime" type="primary" plain="true">确定</button>
+      <button wx:else bindtap="handleChooseTime" type="primary" plain="true">选择</button>
+    </view>
+    <view class="wrapper flex-start">
+      <view>上车地点: </view>
+      <view class="position"> {{startPosition?startPosition:'请选择位置'}} </view>
+      <button bindtap="choosePositionStart" type="primary" plain="true">选择</button>
+    </view>
+  </block>
+  <block wx:if="{{type == '只需导游'}}">
+    <view class="wrapper">
+      <view>性别：</view>
+      <radio-group bindchange="radioUseTypeChange">
+        <radio value="female" checked="true" /> 女
+        <radio value="male" checked="false" />男
+        <radio value="unlimit" checked="false" />不限
+      </radio-group>
+    </view>
+    <view class="wrapper">
+      <view>时间:{{year}}年</view>
+      <view wx:if="{{!isChooseTime}}">{{month}}月{{day}}日</view>
+      <picker-view value="{{value}}" bindchange="bindChange" wx:key="index" wx:else>
+        <picker-view-column>
+          <view wx:for="{{months}}" wx:key="index">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:key="index">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+      <button wx:if="{{isChooseTime}}" bindtap="confirmTime" type="primary" plain="true">确定</button>
+      <button wx:else bindtap="handleChooseTime" type="primary" plain="true">选择</button>
+    </view>
+    <view class="wrapper flex-start">
+      <view>景点: </view>
+      <view class="position"> {{startPosition?startPosition:'请选择位置'}} </view>
+      <button bindtap="choosePositionStart" type="primary" plain="true">选择</button>
+    </view>
+    <view class="wrapper">
+      <view>语种：</view>
+      <radio-group>
+        <radio value="Chinese" checked="false" />汉语
+        <radio value="English" checked="false" />英语
+        <radio value="other" checked="false" />其他
+      </radio-group>
+    </view>
+    <!--<form bindsubmit="bindFormSubmit">-->
+    <view class="wrapper">
+      <view class="remark">备注：</view>
+      <textarea name="remark" class="textarea" />
+    </view>
+    <view class="wrapper">
+      <view>号码：</view>
+      <input type="number" name="phone" maxlength="13" class="phone" />
+    </view>
+    <view class="tip">
+      <view>汉语：X￥ , 英语：Y￥, 其他： Z￥</view>
+    </view>
+    <!--</form>-->
+  </block>
+  <view class="tip" wx:if="{{type!='只需导游'}}">
+    <view>包车全天8小时和半天4小时</view>
+    <view>超时按￥X/小时或Y千米/小时计算</view>
+  </view>
+  <button type="primary" class="btn-next {{type!='只需导游'?'':'fix-top'}} " bindtap="handleNextStep">下一步</button>
+</view>

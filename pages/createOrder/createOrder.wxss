@@ -57,29 +57,9 @@
   display: flex;
 }
 
-.textarea {
-  height: 100rpx;
-  line-height: 40rpx;
-  width: 380rpx;
-  border: 2rpx solid rgba(0, 0, 0, 0.2);
-}
-
-.phone {
-  border: 2rpx solid rgba(0, 0, 0, 0.2);
-}
-
 .remark {
   text-indent: 40rpx;
 }
-
-.tip {
-  font-size: 28rpx;
-  color: #888;
-  margin: 40rpx auto;
-  line-height: 40rpx;
-  text-align: center;
-}
-
 .btn-group {
   margin-top: 100rpx;
   justify-content: center;

@@ -1,91 +1,98 @@
+// pages/pickUpPlane/pickUpPlane.js
+let app = getApp()
+const date = new Date()
+const year = date.getFullYear()
+const months = []
+const days = []
+const month = date.getMonth() + 1
+const day = date.getDate()
 
-//获取应用实例
-var app = getApp()
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
 Page({
   data: {
-    people: 0,
-    ordinaryCar: 0,
-    comfortableCar: 0,
-    luxuryCar: 0
+    months: months,
+    month,
+    days,
+    day,
+    year,
+    value: [month - 1, day - 1],
+    startPosition: '',
+    isChooseTime: false,
+    type: '包车',
+    useType: 'allDay'
   },
-  handleMinusPeople() {
-    if (this.data.people) {
-      let people = this.data.people - 1
-      this.setData({
-        people: people
-      })
-    }
-  },
-  handleAddPeople() {
-    let people = this.data.people + 1
+  radioTypeChange(e) {
+    const value = e.detail.value
     this.setData({
-      people: people
+      type: value
+    })
+    console.log(this.data.type)
+  },
+  radioUseTypeChange(e) {
+    this.setData({
+      useType: e.detail.value
+    })
+    console.log(this.data.useType)
+  },
+  handleChooseTime() {
+    this.setData({
+      isChooseTime: true
     })
   },
-  handleMinusCar1() {
-    if (this.data.ordinaryCar) {
-      let ordinaryCar = this.data.ordinaryCar - 1
-      this.setData({
-        ordinaryCar
-      })
-    }
-  },
-  handleAddCar1() {
-    let ordinaryCar = this.data.ordinaryCar + 1
+  confirmTime() {
     this.setData({
-      ordinaryCar
+      isChooseTime: false
     })
   },
-  handleMinusCar2() {
-    if (this.data.comfortableCar) {
-      let comfortableCar = this.data.comfortableCar - 1
-      this.setData({
-        comfortableCar
-      })
-    }
-  },
-  handleAddCar2() {
-    let comfortableCar = this.data.comfortableCar + 1
+  bindChange: function (e) {
+    const val = e.detail.value
     this.setData({
-      comfortableCar
+      month: this.data.months[val[0]],
+      day: this.data.days[val[1]]
     })
   },
-  handleMinusCar3() {
-    if (this.data.luxuryCar) {
-      let luxuryCar = this.data.luxuryCar - 1
-      this.setData({
-        luxuryCar
-      })
-    }
-  },
-  handleAddCar3() {
-    let luxuryCar = this.data.luxuryCar + 1
-    this.setData({
-      luxuryCar
+  choosePositionStart() {
+    var that = this
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: function (res) {
+        wx.chooseLocation({
+          success: function (res) {
+            that.setData({
+              startPosition: res.name
+            })
+          },
+        })
+      }
     })
   },
-  bindKeyInput: function (e) {
-    let input = Number(e.detail.value)
-    let type = e.target.dataset.type
-    if (type == 'people') {
-      this.setData({
-        people: input
+  handleNextStep() {
+    let time = [this.data.year, this.data.month, this.data.day].join('-')
+    let startPosition = this.data.startPosition
+    let endPosition = this.data.endPosition
+    let type = this.data.type
+    if (time && startPosition && endPosition) {
+      wx.navigateTo({
+        url: `/pages/createOrder/createOrder?time=${time}&startPosition=${startPosition}&endPosition=${endPosition}&type=${type}`,
       })
-    } else if (type == 'ordinary') {
-      this.setData({
-        ordinaryCar: input
-      })
-    } else if (type == 'comfort') {
-      this.setData({
-        comfortableCar: input
-      })
-    } else if (type == 'luxury') {
-      this.setData({
-        luxuryCar: input
+    } else {
+      this.wetoast.toast({
+        title: '好像没有选择位置'
       })
     }
-  },
-  onLoad: function () {
 
+  },
+  onLoad: function (options) {
+    new app.WeToast()
+  },
+  onReady: function () {
+  },
+  onShow: function () {
   }
 })
