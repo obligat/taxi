@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <button bindtap="handlePlane">接送机</button>
-  <button bindtap="handleCar">接送站</button>
-  <button bindtap="handleTravel">旅游预约</button>
+  <button bindtap="handlePlane" type="primary">接送机</button>
+  <button bindtap="handleCar" type="primary">接送站</button>
+  <button bindtap="handleTravel" type="primary">旅游预约</button>
 </view>

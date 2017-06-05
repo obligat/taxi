@@ -6,12 +6,12 @@ Page({
   },
   handlePlane() {
     wx.navigateTo({
-      url: '/pages/pickUpPlane/pickUpPlane',
+      url: '/pages/pickUpPlane/pickUpPlane?type=pickPlane',
     })
   },
   handleCar() {
     wx.navigateTo({
-      url: '/pages/pickUpCar/pickUpCar',
+      url: '/pages/pickUpPlane/pickUpPlane?type=pickCar',
     })
   },
   handleTravel() {
@@ -20,6 +20,18 @@ Page({
     })
   },
   onLoad: function () {
-
+    // const openid = wx.getStorageSync("openid")
+    // if (openid === "o6VgM0WVg3kmdYPdeDb1_obLFtqk") {
+    //   console.log('hhhahha')
+    //   wx.redirectTo({
+    //     url: '../myOrder/myOrder',
+    //     success(res) {
+    //       console.log(res)
+    //     },
+    //     fail(res) {
+    //       console.log(res)
+    //     }
+    //   })
+    // }
   }
 })

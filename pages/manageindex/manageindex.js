@@ -12,19 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const openid = wx.getStorageSync("openid")
-    // if (openid === "o6VgM0WVg3kmdYPdeDb1_obLFtqk") {
-    //   console.log('hhhahha')
-    //   wx.redirectTo({
-    //     url: '../myOrder/myOrder',
-    //     success(res) {
-    //       console.log(res)
-    //     },
-    //     fail(res) {
-    //       console.log(res)
-    //     }
-    //   })
-    // }
+
   },
 
   /**

@@ -22,23 +22,23 @@ Page({
     day,
     year,
     value: [month - 1, day - 1],
-    startPosition: '咸阳机场T2',
-    endPosition: '',
+    startPlace: '咸阳机场T2',
+    endPlace: '',
     isChooseTime: false,
-    type: 'pick'
+    doType: 'pick'
   },
   handlePickUpPlane() {
     this.setData({
-      type: 'pick',
-      startPosition: '咸阳机场T2',
-      endPosition: ''
+      doType: 'pick',
+      startPlace: this.data.type == 'pickPlane' ? '咸阳机场T2' : '西安北站',
+      endPlace: ''
     })
   },
   handleSendPlane() {
     this.setData({
-      type: 'send',
-      endPosition: '咸阳机场T2',
-      startPosition: ''
+      doType: 'send',
+      endPlace: this.data.type == 'pickPlane' ? '咸阳机场T2' : '西安北站',
+      startPlace: ''
     })
   },
   handleChooseTime() {
@@ -66,7 +66,7 @@ Page({
         wx.chooseLocation({
           success: function (res) {
             that.setData({
-              startPosition: res.name
+              startPlace: res.name
             })
           },
         })
@@ -81,7 +81,7 @@ Page({
         wx.chooseLocation({
           success: function (res) {
             that.setData({
-              endPosition: res.name
+              endPlace: res.name
             })
           },
         })
@@ -90,12 +90,13 @@ Page({
   },
   handleNextStep() {
     let time = [this.data.year, this.data.month, this.data.day].join('-')
-    let startPosition = this.data.startPosition
-    let endPosition = this.data.endPosition
-    let type = this.data.type
-    if (time && startPosition && endPosition) {
+    let startPlace = this.data.startPlace
+    let endPlace = this.data.endPlace
+    let word = (this.data.type == 'pickPlane' ? '机' : '站')
+    let type = '接送' + word + ' / ' + (this.data.doType == 'pick' ? '接' : '送') + word
+    if (time && startPlace && endPlace) {
       wx.navigateTo({
-        url: `/pages/createOrder/createOrder?time=${time}&startPosition=${startPosition}&endPosition=${endPosition}&type=${type}`,
+        url: `/pages/createOrder/createOrder?time=${time}&startPlace=${startPlace}&endPlace=${endPlace}&type=${type}`,
       })
     } else {
       this.wetoast.toast({
@@ -106,9 +107,11 @@ Page({
   },
   onLoad: function (options) {
     new app.WeToast()
-  },
-  onReady: function () {
-  },
-  onShow: function () {
+    let type = options.type
+    let startPlace = type == 'pickPlane' ? '咸阳机场T2' : '西安北站'
+    this.setData({
+      type,
+      startPlace
+    })
   }
 })

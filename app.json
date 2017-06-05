@@ -6,7 +6,6 @@
     "pages/createOrder/createOrder",
     "pages/myOrder/myOrder",
     "pages/manageindex/manageindex",
-    "pages/pickUpCar/pickUpCar",
     "pages/usercenter/usercenter",
     "pages/confirmMessage/confirmMessage",
     "pages/orderDetail/orderDetail"
