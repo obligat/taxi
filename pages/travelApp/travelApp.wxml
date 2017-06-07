@@ -1,16 +1,22 @@
 <!--pages/travelApp/travelApp.wxml-->
 <view class="container">
   <radio-group bindchange="radioTypeChange" class="type">
-    <radio value="包车" checked="true" />包车
-    <radio value="班车接送" checked="false" />班车接送
-    <radio value="只需导游" checked="false" />只需导游
+    <label wx:for="{{allType}}" wx:key="{{index}}">
+      <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+    </label>
   </radio-group>
   <block wx:if="{{type != '只需导游'}}">
     <view class="wrapper">
       <view>使用方式：</view>
       <radio-group bindchange="radioUseTypeChange">
-        <radio value="allDay" checked="true" /> 全天
-        <radio value="halfDay" checked="false" />半天
+        <block wx:if="{{type == '包车'}}">
+          <radio value="allDay" checked="true" /> 全天
+          <radio value="halfDay" />半天
+        </block>
+        <block wx:if="{{type=='班车接送'}}">
+          <radio value="单程" checked="true" /> 单程
+          <radio value="往返" />往返
+        </block>
       </radio-group>
     </view>
     <view class="wrapper">
@@ -29,19 +35,16 @@
     </view>
     <view class="wrapper flex-start">
       <view>上车地点: </view>
-      <view class="position"> {{startPosition?startPosition:'请选择位置'}} </view>
+      <view class="position"> {{startPlace?startPlace:'请选择位置'}} </view>
       <button bindtap="choosePositionStart" type="primary" plain="true">选择</button>
+    </view>
+    <view class="wrapper flex-start" wx:if="{{type=='班车接送'}}">
+      <view>送达地点: </view>
+      <view class="position"> {{endPlace?endPlace:'请选择位置'}} </view>
+      <button bindtap="choosePositionEnd" type="primary" plain="true">选择</button>
     </view>
   </block>
   <block wx:if="{{type == '只需导游'}}">
-    <view class="wrapper">
-      <view>性别：</view>
-      <radio-group bindchange="radioUseTypeChange">
-        <radio value="female" checked="true" /> 女
-        <radio value="male" checked="false" />男
-        <radio value="unlimit" checked="false" />不限
-      </radio-group>
-    </view>
     <view class="wrapper">
       <view>时间:{{year}}年</view>
       <view wx:if="{{!isChooseTime}}">{{month}}月{{day}}日</view>
@@ -58,15 +61,15 @@
     </view>
     <view class="wrapper flex-start">
       <view>景点: </view>
-      <view class="position"> {{startPosition?startPosition:'请选择位置'}} </view>
+      <view class="position"> {{startPlace?startPlace:'请选择位置'}} </view>
       <button bindtap="choosePositionStart" type="primary" plain="true">选择</button>
     </view>
     <view class="wrapper">
       <view>语种：</view>
-      <radio-group>
-        <radio value="Chinese" checked="false" />汉语
-        <radio value="English" checked="false" />英语
-        <radio value="other" checked="false" />其他
+      <radio-group bindchange="radioLanguageChange">
+        <radio value="Chinese" checked="true" />汉语
+        <radio value="English" />英语
+        <radio value="other" />其他
       </radio-group>
     </view>
     <!--<form bindsubmit="bindFormSubmit">-->
@@ -87,5 +90,7 @@
     <view>包车全天8小时和半天4小时</view>
     <view>超时按￥X/小时或Y千米/小时计算</view>
   </view>
-  <button type="primary" class="btn-next {{type!='只需导游'?'':'fix-top'}} " bindtap="handleNextStep">下一步</button>
+  <button type="primary" class="btn-next {{type!='只需导游'?'':'fix-top'}} {{type=='班车接送'?'fix-top2':''}}" bindtap="handleNextStep">下一步</button>
 </view>
+<import src="/utils/wetoast/wetoast.wxml" />
+<template is="wetoast" data="{{...__wetoast__}}" />

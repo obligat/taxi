@@ -1,7 +1,6 @@
 // pages/createOrder/createOrder.js
-
-//获取应用实例
-var app = getApp()
+const util = require('../../utils/util')
+const app = getApp()
 Page({
   data: {
     ordinaryCar: 0,
@@ -39,12 +38,21 @@ Page({
     const needGuide = this.data.needGuide
     const language = this.data.language
     const time = this.data.time
-    const startPosition = this.data.startPosition
-    const endPosition = this.data.endPosition
+    const startPlace = this.data.startPlace
+    const endPlace = this.data.endPlace
     const type = this.data.type
-    wx.navigateTo({
-      url: `/pages/confirmMessage/confirmMessage?type=${type}&time=${time}&startPosition=${startPosition}&ordinaryCar=${ordinaryCar}&comfortableCar=${comfortableCar}&luxuryCar=${luxuryCar}&needGuide=${needGuide}&language=${language}&remark=${remark}&phone=${phone}`,
+    const formId = util.formatTime()
+    // wx.navigateTo({
+    //   url: `/pages/confirmMessage/confirmMessage?formId=${formId}&type=${type}&time=${time}&startPlace=${startPlace}&ordinaryCar=${ordinaryCar}&comfortableCar=${comfortableCar}&luxuryCar=${luxuryCar}&needGuide=${needGuide}&language=${language}&remark=${remark}&phone=${phone}`,
+    // })
+    wx.showToast({
+      title: '提交成功,即将返回首页'
     })
+    setTimeout(function () {
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }, 1000)
   },
   handleBack() {
     wx.navigateBack({
@@ -132,8 +140,8 @@ Page({
     console.log(options)
     this.setData({
       time: options.time,
-      startPosition: options.startPosition,
-      endPosition: options.endPosition,
+      startPlace: options.startPlace,
+      endPlace: options.endPlace,
       type: options.type
     })
   }

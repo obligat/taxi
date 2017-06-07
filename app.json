@@ -7,7 +7,6 @@
     "pages/myOrder/myOrder",
     "pages/manageindex/manageindex",
     "pages/usercenter/usercenter",
-    "pages/confirmMessage/confirmMessage",
     "pages/orderDetail/orderDetail"
   ],
   "window": {

@@ -9,5 +9,9 @@
 }
 
 .fix-top {
-  top: 136rpx;
+  top: 236rpx;
+}
+
+.fix-top2{
+  top:300rpx;
 }
