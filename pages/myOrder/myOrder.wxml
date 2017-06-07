@@ -1,5 +1,18 @@
 <!--pages/myOrder/myOrder.wxml-->
-<view class="">
-  <button bindtap="chooseWeizhi">choose GPS </button>
-  <view class="">{{location}}</view>
+<view class="container">
+  <view class="order">
+    <navigator url="/pages/orderDetail/orderDetail" class="item">
+      <view>订单类型：{{type}}</view>
+      <view>订单状态：{{formStatus}}</view>
+      <view>出发时间：{{time}}</view>
+    </navigator>
+    <navigator url="/pages/orderDetail/orderDetail" class="item">
+      <view>订单类型：{{type}}</view>
+      <view>订单状态：已派单</view>
+      <view>出发时间：{{time}}</view>
+      <view>司机电话：13328932322</view>
+      <view>车型：白色丰田卡罗拉</view>
+      <view>车牌号：陕A-7A633</view>
+    </navigator>
+  </view>
 </view>

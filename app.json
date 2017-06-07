@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/usercenter/usercenter",
     "pages/index/index",
     "pages/travelApp/travelApp",
     "pages/pickUpPlane/pickUpPlane",
     "pages/createOrder/createOrder",
     "pages/myOrder/myOrder",
     "pages/manageindex/manageindex",
-    "pages/usercenter/usercenter",
     "pages/orderDetail/orderDetail"
   ],
   "window": {
