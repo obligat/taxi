@@ -4,7 +4,13 @@ let util = require('utils/util')
 App({
   WeToast,
   onLaunch: function () {
-
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.globalData.modelMessage = res
+        console.log(that.globalData.modelMessage)
+      }
+    })
     wx.checkSession({
       success: function () {
         console.log('checkSession is valid.')
@@ -35,6 +41,7 @@ App({
     }
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    modelMessage: ''
   }
 })

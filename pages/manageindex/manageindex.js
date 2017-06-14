@@ -1,66 +1,69 @@
 // pages/manageindex/manageindex.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    footHeight: 555,
+    formId: '201706121121',
+    ordinaryCar: 3,
+    comfortableCar: 4,
+    luxuryCar: 1,
+    remark: "colonel exgressive peacefully chaimpion",
+    orderType: 1,
+    bottomType: 1
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    console.log(app.globalData.modelMessage)
+    this.setData({
+      footHeight: app.globalData.modelMessage.windowHeight
+    })
+    if (options.orderType) {
+      let cars = wx.getStorageSync("cars")
+      let drivers = wx.getStorageSync("drivers")
+      this.setData({
+        orderType: options.orderType,
+        cars,
+        drivers
+      })
+    }
   },
+  handleDispatchOrder() {
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    wx.navigateTo({
+      url: `/pages/dispatchOrder/dispatchOrder?ordinaryCar=${this.data.ordinaryCar}&comfortableCar=${this.data.comfortableCar}&luxuryCar=${this.data.luxuryCar}`,
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  topTab1() {
+    this.setData({
+      orderType: 1
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  topTab2() {
+    this.setData({
+      orderType: 2
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  topTab3() {
+    this.setData({
+      orderType: 3
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  bottomTab1() {
+    this.setData({
+      bottomType: 1
+    })
+    wx.redirectTo({
+      url: '/pages/manageindex/manageindex',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  bottomTab2() {
+    this.setData({
+      bottomType: 2
+    })
+    wx.redirectTo({
+      url: '/pages/managemember/managemember',
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

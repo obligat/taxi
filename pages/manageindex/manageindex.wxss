@@ -1,1 +1,21 @@
 /* pages/manageindex/manageindex.wxss */
+
+.container {
+  margin-top: 90rpx;
+}
+
+.body {
+  margin: 20rpx;
+  border: 2rpx solid #f0f0f0;
+  padding: 10rpx;
+  width: 90%;
+}
+
+.orderType {
+  background: #ccc;
+}
+
+.item {
+  border-bottom: 2rpx dashed #ccc;
+  line-height: 1.5;
+}

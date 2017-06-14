@@ -1,0 +1,116 @@
+/* pages/dispatchOrder/dispatchOrder.wxss */
+
+.btn {
+  width: 80%;
+  padding: 20rpx 0;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 40rpx 10%;
+  background: #1aad19;
+  color: #fff;
+}
+
+.btn-hover {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #179b16;
+}
+
+/*mask*/
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+/*content*/
+
+.drawer_box {
+  width: 650rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #fafafa;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 3px;
+}
+
+.drawer_title {
+  padding: 15px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+}
+
+.drawer_content {
+  height: 210px;
+  overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.btn_ok {
+  padding: 10px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+  border-top: 1px solid #e8e8ea;
+  color: #3cc51f;
+}
+
+.btn_ok_hover {
+  color: rgba(60, 197, 31, 0.6);
+  background: #e7e7eb;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0rpx 40rpx;
+}
+
+.checkbox-group-item {
+  display: flex;
+}
+
+.checkbox-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  width: 114rpx;
+}
+
+.checkbox {
+  margin-bottom: 10rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 336rpx;
+  overflow: scroll;
+}
+
+/*.content > view:nth-child(odd) {
+  background: #f0f0f0;
+  line-height: 1.5;
+  width: 80%;
+  text-align: center;
+}
+
+.content > view:nth-child(even) {
+  line-height: 1.5;
+}*/
+
+.btn-dispatch {
+  position: absolute;
+  bottom: 100rpx;
+}

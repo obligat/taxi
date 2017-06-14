@@ -1,0 +1,27 @@
+<!--pages/test/test.wxml-->
+<view class="btn" hover-class="btn-hover" hover-stay-time="100"  bindtap="handleChooseCar" data-statu="open">选择车辆</view>
+<view class="content">
+  <view wx:for="{{cars}}" wx:key="index">
+    <view class="item">{{item}}</view>
+  </view>
+</view>
+<view class="btn" hover-class="btn-hover" hover-stay-time="100" bindtap="handleChooseDriver" data-statu="open">选择司机</view>
+<view class="content">
+  <view wx:for="{{drivers}}" wx:key="index">
+    <view class="item">{{item}}</view>
+  </view>
+</view>
+<view class="btn btn-dispatch" hover-class="btn-hover" hover-stay-time="100" bindtap="confirmDispatch">确认派单</view>
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <!--drawer content-->
+  <view class="drawer_title">{{chooseType=='car'?'选择车型':'选择司机'}}</view>
+  <view class="drawer_content">
+    <checkbox-group bindchange="checkboxChange" class="checkbox-group">
+      <label class="checkbox" wx:for="{{chooseType=='car'?carItems:driverItems}}" wx:key="index">
+        <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </checkbox-group>
+  </view>
+  <view class="btn_ok" hover-class="btn_ok_hover" bindtap="powerDrawer" data-statu="close">确定</view>
+</view>

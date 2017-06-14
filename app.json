@@ -1,13 +1,15 @@
 {
   "pages": [
-    "pages/usercenter/usercenter",
     "pages/index/index",
+    "pages/usercenter/usercenter",
     "pages/travelApp/travelApp",
     "pages/pickUpPlane/pickUpPlane",
     "pages/createOrder/createOrder",
     "pages/myOrder/myOrder",
     "pages/manageindex/manageindex",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/dispatchOrder/dispatchOrder",
+    "pages/managemember/managemember"
   ],
   "window": {
     "backgroundTextStyle": "light",

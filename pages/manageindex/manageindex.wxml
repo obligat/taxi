@@ -1,2 +1,46 @@
 <!--pages/manageindex/manageindex.wxml-->
-<text>pages/manageindex/manageindex.wxml</text>
+<view class="container">
+  <view class="header">
+    <view class="tab {{orderType==1?'orderType':''}}" hover-class="tab-hover" hover-stay-time="100" bindtap="topTab1">派单</view>
+    <view class="tab {{orderType==2?'orderType':''}}" hover-class="tab-hover" hover-stay-time="100" bindtap="topTab2">进行中</view>
+    <view class="tab" hover-class="tab-hover" hover-stay-time="100" bindtap="topTab3">已完成</view>
+  </view>
+  <view class="body" wx:if="{{orderType==1}}">
+    <view class="form">
+      <view class="item">订单编号：{{formId}}</view>
+      <view class="item">普通：{{ordinaryCar}}辆 舒适：{{comfortableCar}}辆 豪华：{{luxuryCar}}辆</view>
+    </view>
+    <view class="item">导游：{{language?language:'无'}}</view>
+    <view class="item">备注：{{remark}}</view>
+    <button type="primary" size="mini" style="float:right;" bindtap="handleDispatchOrder">派单</button>
+  </view>
+  <view class="body" wx:if="{{orderType == 2}}">
+    <view class="form">
+      <view class="item">订单编号：{{formId}}</view>
+      <view class="item">
+        <view wx:for="{{cars}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="item">
+        <view wx:for="{{drivers}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+    <view class="item">导游：{{language?language:'无'}}</view>
+    <view class="item">状态：未付款</view>
+    <button type="primary" size="mini" style="float:right;" bindtap="handleDispatchOrder">结账</button>
+  </view>
+  <view class="body" wx:if="{{orderType == 3}}">
+    <view class="form">
+      <view class="item">订单编号：{{formId}}</view>
+      <view class="item">
+        预约人：白起
+      </view>
+      <view class="item">
+        消费金额：1000元
+      </view>
+    </view>
+  </view>
+  <view class="footer" style="top:{{footHeight}}px;">
+    <view class="tab" hover-class="tab-hover" hover-stay-time="100" bindtap="bottomTab1">订单</view>
+    <view class="tab" hover-class="tab-hover" hover-stay-time="100" bindtap="bottomTab2">人员</view>
+  </view>
+</view>
